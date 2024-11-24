@@ -1,0 +1,271 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #556b2f;
+  --primary-text-color: #fafad2;
+  --secondary-text-color: #36454f;
+  --secondary-color: #d3d3d380;
+  --background-color: #f7f9fc;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-bar {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  & .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 22px;
+  position: relative;
+  width: 48px;
+}
+.theme-switch input {
+  display: none;
+}
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.4s;
+}
+.slider:before {
+  background-color: #fff;
+  bottom: 1px;
+  left: 1px;
+  content: "";
+  height: 20px;
+  position: absolute;
+  transition: 0.4s;
+  width: 20px;
+}
+.theme-switch input:checked + .slider {
+  background-color: #2b2b2b;
+}
+.theme-switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.contact {
+  background-color: var(--primary-color);
+  padding: 50px 0 50px 0;
+  color: var(--primary-text-color);
+}
+
+.contact-form {
+  position: relative;
+  top: 60px;
+  animation: slideFromRight 2s ease-in;
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.contact-text {
+  animation: slideFromLeft 2s ease-in;
+}
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.card {
+  background-color: var(--secondary-color);
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.contact-form input[type="text"] {
+  border: none;
+  width: 100%;
+  padding: 4px;
+  border: 1px solid grey;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-control {
+  margin: 12px 0;
+}
+
+.btn-primary {
+  padding: 8px;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--primary-text-color);
+}
+
+.technologies {
+  position: relative;
+  color: var(--secondary-text-color);
+  text-align: center;
+  margin: 50px 0;
+
+  & .flex {
+    flex-wrap: wrap;
+  }
+
+  & .card {
+    max-width: 150px;
+    text-align: center;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      transform: translateY(-12px);
+    }
+
+    & img {
+      width: 100%;
+    }
+  }
+}
+
+.projects {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 50px 0;
+  color: var(--primary-text-color);
+
+  & a {
+    color: var(--primary-text-color);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  & .card {
+    animation: fadein 2s ease-in;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.footer {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  padding: 20px 0;
+
+
+  & a{
+    color: var(--secondary-text-color);
+    text-decoration: none;
+  }
+
+  & .socials{
+    justify-self: end;
+  }
+}
+
+/* responsive design pt tableta */
+@media (max-width: 820px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-text{
+    text-align: center;
+  }
+
+  .contact-form{
+    top: 0px;
+  }
+
+  .footer .grid{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .technologies .card {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+
+  .card {
+  padding: 8px;
+  margin: 4px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .footer {
+ grid-template-columns: 1fr;
+ justify-items: center;
+
+ & div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+ }
+}
+}
